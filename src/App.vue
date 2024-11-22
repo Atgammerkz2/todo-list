@@ -1,16 +1,16 @@
 <template>
   <div class="container mt-4">
-    <h1 class="text-center">TODO List</h1>
-    <TaskList />
+    <h1 class="text-center">Lista de Tarefas</h1>
+    <ListaTarefas />
   </div>
 </template>
 
 <script>
-import TaskList from './components/TaskList.vue';
+import ListaTarefas from './components/ListaTarefas.vue';
 
 export default {
   components: {
-    TaskList,
+    ListaTarefas,
   },
 };
 </script>
