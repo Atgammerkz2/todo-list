@@ -43,12 +43,10 @@
       <!-- Modal de criação/edição -->
       <ModalTarefa
         v-if="exibirModal"
-        :task="tarefaSelecionada"
+        :tarefa="tarefaSelecionada"
         @salvar="obterTarefas"
         @fechar="fecharModal"
       />
-  
-      
     </div>
   </template>
   
@@ -76,7 +74,7 @@
       marcarComoConcluida(tarefa) {
         axios
           .patch(`http://localhost:3000/tarefas/${tarefa.id}`, {
-            completed: !tarefa.concluida,
+            concluida: !tarefa.concluida,
           })
           .then(this.obterTarefas);
       },
@@ -105,6 +103,9 @@
           this.fecharModalDelecao();
         }
       },
+    },
+    mounted() {
+      this.obterTarefas();
     }
   };
   </script>

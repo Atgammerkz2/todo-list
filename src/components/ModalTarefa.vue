@@ -1,13 +1,9 @@
 <template>
-    <b-modal
-      :title="tarefa ? 'Editar Tarefa' : 'Criar Tarefa'"
-      @hide="fecharModal"
-      v-model="exibir"
-      hide-footer>
-      <div>
+    <div class="backdrop">
+      <div class="modal-cadastro p-4">
         <form @submit.prevent="salvarTarefa">
           <div class="mb-3">
-            <label for="description" class="form-label">Descrição</label>
+            <label for="descricao" class="form-label">Descrição</label>
             <input
               id="descricao"
               type="text"
@@ -17,7 +13,7 @@
             />
           </div>
           <div class="mb-3">
-            <label for="deadline" class="form-label">Prazo</label>
+            <label for="prazo" class="form-label">Prazo</label>
             <input
               id="prazo"
               type="date"
@@ -26,11 +22,11 @@
               required
             />
           </div>
-          <button class="btn btn-primary" type="submit">Salvar</button>
+          <button class="btn btn-primary mr-3" type="submit">Salvar</button>
           <button class="btn btn-secondary" @click="fecharModal" type="button">Cancelar</button>
         </form>
       </div>
-    </b-modal>
+    </div>
   </template>
   
   <script>
@@ -76,8 +72,27 @@
       },
       fecharModal() {
         this.$emit('fechar');
-      },
-    },
+      }
+    }
   };
   </script>
   
+  <style scoped>
+  .backdrop {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-cadastro {
+    background-color: white;
+    box-shadow: 0px 8px 1px white;
+    border-radius: 20px;
+  }
+  </style>
